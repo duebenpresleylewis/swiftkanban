@@ -22,43 +22,47 @@
         keep projects flowing smoothly. A lightweight Kanban board built for
         speed and simplicity
       </p>
-      <div class="kanban-container grid grid-cols-3 gap-4 mt-8">
-        <div
-          id="todo"
-          class="secondary-board flex flex-col items-center justify-between rounded-xl"
-        >
-          <h2
-            class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+      <div id="kanban-container" class="flex justify-evenly items-center">
+        <div class="kanban-grid-container grid grid-cols-3 gap-8 mt-8">
+          <div
+            id="todo"
+            class="secondary-board flex flex-col items-center justify-between rounded-xl"
           >
-            To Do
-          </h2>
+            <h2
+              class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+            >
+              To Do
+            </h2>
 
-          <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
-        </div>
-        <div
-          id="doing"
-          class="secondary-board flex flex-col items-center justify-between rounded-xl"
-        >
-          <h2
-            class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+            <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
+          </div>
+          <div
+            id="doing"
+            class="secondary-board flex flex-col items-center justify-between rounded-xl"
           >
-            Doing
-          </h2>
-          <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
-        </div>
-        <div
-          id="done"
-          class="secondary-board flex flex-col items-center justify-between rounded-xl"
-        >
-          <h2
-            class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+            <h2
+              class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+            >
+              Doing
+            </h2>
+            <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
+          </div>
+          <div
+            id="done"
+            class="secondary-board flex flex-col items-center justify-between rounded-xl"
           >
-            Done
-          </h2>
-          <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
+            <h2
+              class="text-2xl font-bold mb-4 bg-amber-50 w-full rounded-xl text-center"
+            >
+              Done
+            </h2>
+            <ul class="task-list w-full h-full bg-mist-200 rounded-xl"></ul>
+          </div>
         </div>
       </div>
     </main>
+
+    <div class="toast-container"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
