@@ -24,9 +24,13 @@ export function initialiseKanban() {
     taskItem.addEventListener("dragstart", (event) => {
       event.dataTransfer.setData("text/plain", taskItem.id);
       event.dataTransfer.effectAllowed = "move";
+      taskItem.classList.add("dragging");
+      document.body.style.cursor = "grabbing";
     });
 
     taskItem.addEventListener("dragend", () => {
+      taskItem.classList.remove("dragging");
+      document.body.style.cursor = "";
       kanbanColumns.forEach((column) => column.classList.remove("drag-over"));
     });
   });
