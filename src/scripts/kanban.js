@@ -1,3 +1,5 @@
+import {showToast} from "./toast.js";
+
 export function initialiseKanban() {
   const kanbanContainer = document.getElementById("kanban-container");
   const taskItems = document.querySelectorAll(".task-item");
@@ -49,7 +51,7 @@ export function initialiseKanban() {
 
   function dropHandler(event) {
     event.preventDefault();
-    console.log("Drop event triggered");
+    showToast("Task dropped!");
     const taskId = event.dataTransfer.getData("text/plain");
     const taskItem = document.getElementById(taskId);
     if (taskItem && event.target.classList.contains("kanban-column")) {
