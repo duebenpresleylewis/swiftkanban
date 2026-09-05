@@ -16,10 +16,27 @@
   </head>
   <body class="flex flex-col justify-center items-center bg-amber-100 p-6">
 
-    <div class="modal-container">
-      <div class="modal">
-        <input type="text" id="task-input" placeholder="Enter task name"
-        class="w-full py-0.5 px-1 border-2 border-gray-300 rounded-md" />
+    <div class="modal-container" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <h3 id="modal-title">Add Task</h3>
+          <button id="close-modal" type="button" aria-label="Close modal">×</button>
+        </div>
+
+        <input  
+          type="text"
+          id="task-input"
+          placeholder="Enter task name"
+          class="w-full py-2 px-3 border-2 border-gray-300 rounded-md mb-4"
+        />
+
+        <button
+          id="add-task-submit"
+          type="button"
+          class="bg-amber-700 text-white font-bold py-2 px-4 rounded-full hover:bg-amber-800 transition-colors"
+        >
+          Add
+        </button>
       </div>
     </div>
 
