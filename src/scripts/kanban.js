@@ -49,6 +49,7 @@ export function initialiseKanban() {
 
   function dropHandler(event) {
     event.preventDefault();
+    console.log("Drop event triggered");
     const taskId = event.dataTransfer.getData("text/plain");
     const taskItem = document.getElementById(taskId);
     if (taskItem && event.target.classList.contains("kanban-column")) {

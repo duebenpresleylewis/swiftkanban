@@ -27,7 +27,7 @@
   width: 260px;
   min-height: 320px;
   border-radius: 0.5rem;
-  border: 2px dashed #000;
+
 }
 .kanban-column.drag-over {
   background-color: #b9b9b9;
