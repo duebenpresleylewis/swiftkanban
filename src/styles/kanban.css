@@ -1,5 +1,5 @@
 .secondary-board {
-  background-color: #fbbf24;
+  background-color: #fdbc17;
   color: #000;
   padding: 1.25rem;
   margin: 1rem;
@@ -20,16 +20,17 @@
 }
 
 .kanban-column {
-  background-color: #fbbf24;
+  background-color: #dbdbdb;
   color: #000;
   padding: 1rem;
   margin: 0.5rem;
   width: 260px;
   min-height: 320px;
   border-radius: 0.5rem;
+  border: 2px dashed #000;
 }
-.kanban-column.over {
-  background-color: #fbbf24;
+.kanban-column.drag-over {
+  background-color: #b9b9b9;
   color: #000;
   padding: 1rem;
   margin: 0.5rem;

@@ -1,70 +1,59 @@
 export function initialiseKanban() {
   const kanbanContainer = document.getElementById("kanban-container");
-  const kanbanColumns = document.querySelectorAll(".kanban-column");
   const taskItems = document.querySelectorAll(".task-item");
+  const kanbanColumns = document.querySelectorAll(".kanban-column");
 
   if (!kanbanContainer || !kanbanColumns.length || !taskItems.length) {
     return;
   }
 
-  const moveTaskToColumn = (taskId, targetColumn) => {
-    if (!taskId || !targetColumn) {
-      return;
-    }
+  for(const taskItem of taskItems) {
+    taskItem.addEventListener("dragstart", dragStartHandler);
+    taskItem.addEventListener("dragend", dragEndHandler);
+  }
 
-    const taskElement = document.getElementById(taskId);
-    const taskList = targetColumn.querySelector(".task-list");
+  for(const column of kanbanColumns) {
+    column.addEventListener("dragover", dragOverHandler);
+    column.addEventListener("dragenter", dragEnterHandler);
+    column.addEventListener("dragleave", dragLeaveHandler);
+    column.addEventListener("drop", dropHandler);
+  }
 
-    if (taskElement && taskList && taskList !== taskElement.parentElement) {
-      taskList.appendChild(taskElement);
-    }
-  };
+  function dragStartHandler(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+    event.dataTransfer.effectAllowed = "move";
+    event.target.classList.add("dragging");
+    document.body.style.cursor = "grabbing";
+  }
 
-  taskItems.forEach((taskItem) => {
-    taskItem.addEventListener("dragstart", (event) => {
-      event.dataTransfer.setData("text/plain", taskItem.id);
-      event.dataTransfer.effectAllowed = "move";
-      taskItem.classList.add("dragging");
-      document.body.style.cursor = "grabbing";
-    });
-
-    taskItem.addEventListener("dragend", () => {
-      taskItem.classList.remove("dragging");
-      document.body.style.cursor = "";
-      kanbanColumns.forEach((column) => column.classList.remove("drag-over"));
-    });
-  });
-
-  kanbanColumns.forEach((column) => {
-    column.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-
-    column.addEventListener("dragenter", (event) => {
-      event.preventDefault();
-      column.classList.add("drag-over");
-    });
-
-    column.addEventListener("dragleave", (event) => {
-      if (!column.contains(event.relatedTarget)) {
-        column.classList.remove("drag-over");
-      }
-    });
-
-    column.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const taskId = event.dataTransfer.getData("text/plain");
-      moveTaskToColumn(taskId, column);
-      column.classList.remove("drag-over");
-    });
-  });
-
-  kanbanContainer.addEventListener("drop", (event) => {
-    event.preventDefault();
-    const targetColumn = event.target.closest(".kanban-column");
-    const taskId = event.dataTransfer.getData("text/plain");
-
-    moveTaskToColumn(taskId, targetColumn);
+  function dragEndHandler(event) {
+    event.target.classList.remove("dragging");
+    document.body.style.cursor = "";
     kanbanColumns.forEach((column) => column.classList.remove("drag-over"));
-  });
+  }
+
+  function dragOverHandler(event) {
+    event.preventDefault();
+  }
+
+  function dragEnterHandler(event) {
+    event.preventDefault();
+    event.target.classList.add("drag-over");
+  }
+
+  function dragLeaveHandler(event) {
+    if (!event.target.contains(event.relatedTarget)) {
+      event.target.classList.remove("drag-over");
+    }
+  }
+
+  function dropHandler(event) {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData("text/plain");
+    const taskItem = document.getElementById(taskId);
+    if (taskItem && event.target.classList.contains("kanban-column")) {
+      event.target.appendChild(taskItem);
+    }
+    event.target.classList.remove("drag-over");
+  }
 }
