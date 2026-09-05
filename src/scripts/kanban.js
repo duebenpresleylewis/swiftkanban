@@ -49,14 +49,20 @@ export function initialiseKanban() {
     }
   }
 
-  function dropHandler(event) {
-    event.preventDefault();
-    showToast("Task dropped!");
-    const taskId = event.dataTransfer.getData("text/plain");
-    const taskItem = document.getElementById(taskId);
-    if (taskItem && event.target.classList.contains("kanban-column")) {
-      event.target.appendChild(taskItem);
-    }
-    event.target.classList.remove("drag-over");
+function dropHandler(event) {
+  event.preventDefault();
+
+  showToast("Task moved!", "success");
+  const column = event.target.closest(".kanban-column");
+  if (!column) return;
+
+  const taskId = event.dataTransfer.getData("text/plain");
+  const taskItem = document.getElementById(taskId);
+
+  if (taskItem) {
+    column.appendChild(taskItem);
   }
+
+  column.classList.remove("drag-over");
+}
 }

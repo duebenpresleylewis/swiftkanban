@@ -54,6 +54,20 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.toast.hide {
+  display: none;
+}
+
+.toast.success {
+  background-color: #4ade80;
+  color: #000;
+}
+
+.toast.error {
+  background-color: #f87171;
+  color: #000;
+}
+
 .toast.show {
   animation: fadeInOut 3s forwards;
 }
