@@ -12,6 +12,6 @@ export function initializeAddTaskButton() {
         taskItem.setAttribute("draggable", "true");
         taskItem.textContent = "New Task";
         todoColumn.appendChild(taskItem);
-        showToast("Task added!");
+        showToast("Task added!", "success");
     });
 }
