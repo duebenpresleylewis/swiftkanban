@@ -3,7 +3,7 @@
   color: #000;
   padding: 1.25rem;
   margin: 1rem;
-  width: 260px;
+  width: 100%;
   min-height: 320px;
   border-radius: 0.5rem;
 }
@@ -24,20 +24,21 @@
   color: #000;
   padding: 1rem;
   margin: 0.5rem;
-  width: 260px;
+  width: 100%;
   min-height: 320px;
   border-radius: 0.5rem;
-
 }
+
 .kanban-column.drag-over {
   background-color: #b9b9b9;
   color: #000;
   padding: 1rem;
   margin: 0.5rem;
-  width: 260px;
+  width: 100%;
   min-height: 320px;
   border-radius: 0.5rem;
 }
+
 .toast-container {
   position: fixed;
   top: 1rem;
@@ -70,6 +71,15 @@
 
 .toast.show {
   animation: fadeInOut 3s forwards;
+}
+
+@media (max-width: 640px) {
+  .secondary-board,
+  .kanban-column,
+  .kanban-column.drag-over {
+    margin: 0;
+    min-height: 260px;
+  }
 }
 
 @keyframes fadeInOut {
