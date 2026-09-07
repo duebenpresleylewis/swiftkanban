@@ -1,4 +1,4 @@
-import {showToast} from "./toast.js";
+import { showToast } from "./toast.js";
 
 export function initialiseKanban() {
   const kanbanContainer = document.getElementById("kanban-container");
@@ -9,12 +9,12 @@ export function initialiseKanban() {
     return;
   }
 
-  for(const taskItem of taskItems) {
+  for (const taskItem of taskItems) {
     taskItem.addEventListener("dragstart", dragStartHandler);
     taskItem.addEventListener("dragend", dragEndHandler);
   }
 
-  for(const column of kanbanColumns) {
+  for (const column of kanbanColumns) {
     column.addEventListener("dragover", dragOverHandler);
     column.addEventListener("dragenter", dragEnterHandler);
     column.addEventListener("dragleave", dragLeaveHandler);
@@ -49,20 +49,36 @@ export function initialiseKanban() {
     }
   }
 
-function dropHandler(event) {
-  event.preventDefault();
+  function dropHandler(event) {
+    event.preventDefault();
 
-  showToast("Task moved!", "success");
-  const column = event.target.closest(".kanban-column");
-  if (!column) return;
+    const column = event.target.closest(".kanban-column");
+    if (!column) return;
 
-  const taskId = event.dataTransfer.getData("text/plain");
-  const taskItem = document.getElementById(taskId);
+    const taskId = event.dataTransfer.getData("text/plain");
+    const taskItem = document.getElementById(taskId);
 
-  if (taskItem) {
+    if (!taskItem) {
+      column.classList.remove("drag-over");
+      return;
+    }
+
     column.appendChild(taskItem);
-  }
 
-  column.classList.remove("drag-over");
-}
+    if (column.id === "done") {
+      const taskName = taskItem.textContent.trim() || "this task";
+      const shouldDelete = window.confirm(`Delete "${taskName}"?`);
+
+      if (shouldDelete) {
+        taskItem.remove();
+        showToast("Task deleted.", "success");
+      } else {
+        showToast("Task kept in Done.", "success");
+      }
+    } else {
+      showToast("Task moved!", "success");
+    }
+
+    column.classList.remove("drag-over");
+  }
 }

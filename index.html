@@ -15,15 +15,21 @@
     />
   </head>
   <body class="flex flex-col justify-center items-center bg-amber-100 p-6">
-
     <div class="modal-container" aria-hidden="true">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
         <div class="modal-header">
           <h3 id="modal-title">Add Task</h3>
-          <button id="close-modal" type="button" aria-label="Close modal">×</button>
+          <button id="close-modal" type="button" aria-label="Close modal">
+            ×
+          </button>
         </div>
 
-        <input  
+        <input
           type="text"
           id="task-input"
           placeholder="Enter task name"
@@ -73,52 +79,7 @@
             <ul
               id="todo-column"
               class="kanban-column task-list w-full h-full bg-mist-200 rounded-xl transition-colors"
-            >
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task1"
-              >
-                Task 1
-              </li>
-
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task2"
-              >
-                Task 2
-              </li>
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task2"
-              >
-                Task 2
-              </li>
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task2"
-              >
-                Task 2
-              </li>
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task2"
-              >
-                Task 2
-              </li>
-              <li
-                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
-                draggable="true"
-                id="task2"
-              >
-                Task 2
-              </li>
-
-            </ul>
+            ></ul>
           </div>
 
           <div
