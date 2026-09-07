@@ -58,11 +58,12 @@ export function initializeAddTaskButton() {
     taskItem.className =
       "task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all";
     taskItem.setAttribute("draggable", "true");
-    taskItem.id = `task-${Date.now()}`;
+    taskItem.dataset.taskId = `task-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    taskItem.id = taskItem.dataset.taskId;
     taskItem.textContent = taskValue;
 
     taskItem.addEventListener("dragstart", (event) => {
-      event.dataTransfer.setData("text/plain", taskItem.id);
+      event.dataTransfer.setData("text/plain", taskItem.dataset.taskId);
       event.dataTransfer.effectAllowed = "move";
       taskItem.classList.add("dragging");
       document.body.style.cursor = "grabbing";

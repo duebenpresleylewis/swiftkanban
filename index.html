@@ -78,8 +78,34 @@
 
             <ul
               id="todo-column"
+              data-column="todo"
               class="kanban-column task-list w-full h-full bg-mist-200 rounded-xl transition-colors"
-            ></ul>
+            >
+              <li
+                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
+                draggable="true"
+                id="task-1"
+                data-task-id="task-1"
+              >
+                Task 1
+              </li>
+              <li
+                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
+                draggable="true"
+                id="task-2"
+                data-task-id="task-2"
+              >
+                Task 2
+              </li>
+              <li
+                class="task-item bg-amber-500 rounded-xl p-4 m-2 cursor-grab active:cursor-grabbing active:shadow-2xs active:scale-105 transition-all"
+                draggable="true"
+                id="task-3"
+                data-task-id="task-3"
+              >
+                Task 3
+              </li>
+            </ul>
           </div>
 
           <div
@@ -92,6 +118,8 @@
               Doing
             </h2>
             <ul
+              id="doing-column"
+              data-column="doing"
               class="kanban-column task-list w-full h-full bg-mist-200 rounded-xl transition-colors"
             ></ul>
           </div>
@@ -106,6 +134,8 @@
               Done
             </h2>
             <ul
+              id="done-column"
+              data-column="done"
               class="kanban-column task-list w-full h-full bg-mist-200 rounded-xl transition-colors"
             ></ul>
           </div>
